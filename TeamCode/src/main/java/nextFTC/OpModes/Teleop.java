@@ -7,7 +7,10 @@ import com.rowanmcalpin.nextftc.core.command.groups.SequentialGroup;
 import com.rowanmcalpin.nextftc.core.command.utility.InstantCommand;
 import com.rowanmcalpin.nextftc.core.command.utility.conditionals.PassiveConditionalCommand;
 
+import com.rowanmcalpin.nextftc.core.components.BindingsComponent;
+import com.rowanmcalpin.nextftc.core.components.SubsystemComponent;
 import com.rowanmcalpin.nextftc.ftc.NextFTCOpMode;
+import com.rowanmcalpin.nextftc.ftc.components.BulkReadComponent;
 import com.rowanmcalpin.nextftc.ftc.driving.DifferentialTankDriverControlled;
 import com.rowanmcalpin.nextftc.ftc.hardware.controllables.MotorEx;
 
@@ -22,7 +25,11 @@ import nextFTC.subsystems.Slides;
 @TeleOp(name = "testTele")
 public class Teleop extends NextFTCOpMode {
     public Teleop() {
-        super(Elbows.INSTANCE, Claw.INSTANCE, Slides.INSTANCE);
+        addComponents(
+                new SubsystemComponent(Slides.INSTANCE, Claw.INSTANCE, Elbows.INSTANCE),
+                new BulkReadComponent(),
+                new BindingsComponent()
+        );
     }
 
     public String leftFrontName = "leftFront";
@@ -88,7 +95,6 @@ public class Teleop extends NextFTCOpMode {
                     )
             );
         });
-        git init
         gamepadManager.getGamepad2().getX().setPressedCommand(
                 () ->{
                     return new SequentialGroup(

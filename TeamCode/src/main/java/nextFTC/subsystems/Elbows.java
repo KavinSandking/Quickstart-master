@@ -1,7 +1,7 @@
 package nextFTC.subsystems;
 
 import com.qualcomm.robotcore.hardware.Servo;
-import com.rowanmcalpin.nextftc.core.Subsystem;
+
 import com.rowanmcalpin.nextftc.core.command.Command;
 import com.rowanmcalpin.nextftc.core.command.groups.SequentialGroup;
 import com.rowanmcalpin.nextftc.core.command.utility.InstantCommand;
@@ -9,12 +9,13 @@ import com.rowanmcalpin.nextftc.core.command.utility.conditionals.PassiveConditi
 import com.rowanmcalpin.nextftc.ftc.OpModeData;
 import com.rowanmcalpin.nextftc.ftc.hardware.MultipleServosToSeperatePositions;
 import com.rowanmcalpin.nextftc.ftc.hardware.ServoToPosition;
+import com.rowanmcalpin.nextftc.core.subsystems.Subsystem;
 
 import java.util.Map;
 
 import nextFTC.config;
 
-public class Elbows extends Subsystem {
+public class Elbows implements Subsystem {
 
     public static final Elbows INSTANCE = new Elbows();
     private Elbows(){}
